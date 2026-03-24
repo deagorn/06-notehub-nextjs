@@ -1,4 +1,4 @@
-import NoteDetails from "@/components/NoteDetails/NoteDetails";
+import NoteDetailsClient from "./NoteDetails.client";
 import { fetchNoteById } from "@/lib/api";
 import {
   dehydrate,
@@ -23,7 +23,7 @@ export default async function NoteDetailsPage({
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NoteDetails />
+      <NoteDetailsClient />
     </HydrationBoundary>
   );
 }

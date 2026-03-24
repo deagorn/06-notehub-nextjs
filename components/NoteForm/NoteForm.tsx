@@ -42,8 +42,12 @@ export default function NoteForm({ onClose }: NoteFormProps) {
       initialValues={initialValues}
       validationSchema={NoteSchema}
       onSubmit={(values, actions) => {
-        mutation.mutate(values);
-        actions.setSubmitting(false);
+        // Передаємо колбек onSettled прямо у виклик мутації
+        mutation.mutate(values, {
+          onSettled: () => {
+            actions.setSubmitting(false);
+          },
+        });
       }}
     >
       {({ isSubmitting }) => (
